@@ -58,6 +58,7 @@ class Particle:
         # self.display()
 
     def interact(self):
+        # query tree to get points in same cluster
         for i in tree.query_ball_point(self.pos, r=interaction_dist):
             other = particles[i]
             force = self.pos - other.pos
