@@ -1,8 +1,13 @@
 # Notes
 
-## Presentation Description
+## Presentation
 
-https://talks.python.org.br/pybr26/talk/JGTEZV/
+[Website Description](https://talks.python.org.br/pybr26/talk/JGTEZV/)
+
+## Quarto Resoures
+
+* [Presentation documentation](https://quarto.org/docs/presentations/)
+* [Revealjs + Quarto](https://quarto.org/docs/presentations/revealjs/)
 
 ## Setup
 
