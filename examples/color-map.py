@@ -32,7 +32,7 @@ def draw():
     py5.os_noise_seed(n_seed)
     z = py5.mouse_x
     noise_values = py5.os_noise(mesh_x, mesh_y, z * noise_scale)
-    idxs = py5.remap(noise_values, -1, 1, 0, len(np_colors)).astype(np.uint32)
+    idxs = py5.remap(noise_values, -1, 1, 0, len(np_colors)).astype(np.uint32)  # type: ignore
     py5.set_np_pixels(np_colors[idxs], bands="ARGB")
 
 

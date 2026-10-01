@@ -18,7 +18,7 @@ def setup():
 def draw():
     global pos
     py5.background(240)
-    py5.points(pos)
+    py5.points(pos)  # type: ignore
     pos += vel
     pos %= WIDTH
 
