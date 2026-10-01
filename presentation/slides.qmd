@@ -1,0 +1,38 @@
+---
+title: "Arte com matrizes"
+subtitle: "NumPy na programação criativa"
+author: "Alexandre Villares & James Schmitz"
+format:
+  revealjs:
+    theme: default
+    transition: slide
+    slide-number: true
+    code-line-numbers: true
+    code-copy: hover
+execute:
+  echo: true
+  freeze: auto
+---
+
+# New Section
+
+## New Slide
+
+* Bullet
+* Points
+* On
+* Slide
+
+::: {.notes}
+Speaker Notes
+:::
+
+---
+
+New Slide with code and no header
+
+```{python}
+import numpy as np
+
+np.random.rand(10)
+```
