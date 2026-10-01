@@ -1,5 +1,9 @@
 # Notes
 
+## Presentation Description
+
+https://talks.python.org.br/pybr26/talk/JGTEZV/
+
 ## Setup
 
 Setup the environment with uv:
