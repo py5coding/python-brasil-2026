@@ -8,10 +8,15 @@ noise_scale = 0.005
 def setup():
     global mesh_x, mesh_y, np_colors
     py5.size(600, 600)
-    reds = [py5.color(255, 50, a**2) for a in range(32)]
-    blacks = [py5.color(0) for a in range(8)]
-    yellows = [py5.color(255, 255, a * 8) for a in range(32)]
-    colors = (reds + blacks + yellows) * 12
+    blue_to_red = [
+        py5.color(a * 8,  a * 2, 255 - a * 8)
+        for a in range(32)
+    ]
+    yellow_to_blue = [
+        py5.color(255 - a * 8, 255 - a * 4, a * 2)
+        for a in range(32)
+        ]
+    colors = (blue_to_red + yellow_to_blue) * 5
     np_colors = np.dstack(
         (
             [c >> 24 & 0xFF for c in colors],
