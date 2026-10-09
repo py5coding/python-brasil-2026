@@ -137,18 +137,17 @@ def setup():
     flock = Flock(N, py5.width, py5.height)
 
 
-def predraw_update():
-    # TODO: should we really use predraw_update? The performance benefit is
-    # minimal and it complicates the example
-    global red_mask, orange_mask, yellow_mask
-    flock.run()
-    red_mask = flock.count > 30
-    orange_mask = (20 < flock.count) * (flock.count <= 30)
-    yellow_mask = flock.count <= 20
 
 
 def draw():
     py5.background(0)
+    flock.run()
+    # should we have multi-colored boids like this?
+    # maybe this other drawing ideas from
+    # https://github.com/py5coding/py5generator/discussions/805#discussioncomment-18547220
+    red_mask = flock.count > 30
+    orange_mask = (20 < flock.count) * (flock.count <= 30)
+    yellow_mask = flock.count <= 20
     draw_boids(flock, red_mask, "red")
     draw_boids(flock, orange_mask, "orange")
     draw_boids(flock, yellow_mask, "yellow")
