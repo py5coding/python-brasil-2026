@@ -4,11 +4,14 @@ subtitle: "NumPy na programação criativa"
 author: "Alexandre Villares & James Schmitz"
 format:
   revealjs:
-    theme: default
+    # theme: default
+    # theme: moon
+    theme: night
     transition: slide
     slide-number: true
     code-line-numbers: true
     code-copy: hover
+    css: pybr2026.css
 execute:
   echo: true
   freeze: auto
