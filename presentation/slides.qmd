@@ -34,19 +34,33 @@ Speaker Notes
 
 ![](images/john-simon-jr-quote.png){width="800"}
 
+::: {.credit}
+John Simon, Jr. *Authorship, Creativity, and Code*
+:::
+
 ::: notes
 Creative Coding is the practice of writing software as a form of creative expression. The "Creative Coding" world includes people outside of professional software developers. It includes beginner coders, hobbyists, designers, educators, artists, and more.
 :::
 
 ## What is py5?
 
-![](images/times-square-river-is-a-circle.png)
+Creative Coding Framework
 
 ::: notes
-TODO: add a code example slide? Turn this into two slides?
+TODO: add simple example here
 
 In this presentation we will use the Python library py5. This library is used extensively in educational settings and also to create art.
+:::
 
+## {.credit-slide background-image="images/times-square-river-is-a-circle.png" background-size="cover"}
+
+::: {.credit-bar}
+The River is a Circle (Times Square Edition) by Marina Zurkow & James Schmitz
+
+(photo courtesy of Times Square Alliance)
+:::
+
+::: notes
 The River is a Circle (Times Square Edition) by Marina Zurkow & James Schmitz.
 (photo courtesy of Times Square Alliance)
 :::

@@ -194,3 +194,35 @@
 .reveal pre code {
   max-height: none;
 }
+
+/* Discrete photo credit */
+.reveal .credit {
+  font-family: "Cascadia Mono", monospace;
+  font-size: 16px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* Bottom bar overlay for full-bleed photo slides */
+.reveal .credit-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 16px 64px;
+  background: rgba(15, 15, 15, 0.75);
+  color: var(--off-white);
+  font-family: "Cascadia Mono", monospace;
+  font-size: 20px;
+}
+
+/* Remove border and hide h2 on full-bleed slides */
+.reveal section.credit-slide h2,
+.reveal section.imagem-cheia h2,
+.reveal h2:empty {
+  display: none !important;
+  border-bottom: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
