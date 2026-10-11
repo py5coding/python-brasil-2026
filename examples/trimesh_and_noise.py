@@ -25,6 +25,18 @@ def setup():
          k * W + W * 2 * py5.os_noise(i * step, j * step))
         for i, j, k in product(range(A), range(B), range(C))
     ])
+    
+    i_vals, j_vals, k_vals = np.meshgrid(np.arange(A), np.arange(B), np.arange(C), indexing='ij')
+    i_flat = i_vals.flatten()
+    j_flat = j_vals.flatten()
+    k_flat = k_vals.flatten()
+    noise_vals = py5.os_noise(i_flat * step, j_flat * step)  # vectorized noise call
+    vs = np.column_stack([
+        m + i_flat * W + W / 2,
+        m + j_flat * W + W / 2,
+        k_flat * W + W * 2 * noise_vals
+    ])    
+    
     faces =[]
     for i, j in product(range(A), range(B)):
         for k in range(C):
@@ -57,7 +69,7 @@ def setup():
     faces = np.array(faces)
     mesh = trimesh.Trimesh(vertices=vs, faces=faces)
     
-    animated_gif('out.gif', duration=5/60, frame_numbers=range(1, 361, 5))
+    #animated_gif('out.gif', duration=5/60, frame_numbers=range(1, 361, 5))
     
 def draw():
     py5.background(0, 100, 0)
@@ -67,6 +79,6 @@ def draw():
     py5.rotate_y(py5.radians(45))
     py5.translate(-py5.width / 2, -py5.height / 2)
     py5.fill(240)
-    py5.shape(mesh)
+    py5.shape(py5.convert_cached_shape(mesh, facet_edges=False))
     
 py5.run_sketch(block=False)
