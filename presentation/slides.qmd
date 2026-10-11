@@ -46,6 +46,9 @@ Creative Coding is the practice of writing software as a form of creative expres
 TODO: add a code example slide? Turn this into two slides?
 
 In this presentation we will use the Python library py5. This library is used extensively in educational settings and also to create art.
+
+The River is a Circle (Times Square Edition) by Marina Zurkow & James Schmitz.
+(photo courtesy of Times Square Alliance)
 :::
 
 # Basic concepts of the NumPy library
