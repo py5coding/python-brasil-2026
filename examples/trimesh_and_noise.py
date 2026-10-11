@@ -19,23 +19,31 @@ def setup():
         in enumerate(product(range(A), range(B), range(C)
         ))
     }
-    m = (py5.width - W * A) / 2
-    vs = np.array([(m + i * W + W / 2,
-         m + j * W + W / 2,
-         k * W + W * 2 * py5.os_noise(i * step, j * step))
-        for i, j, k in product(range(A), range(B), range(C))
-    ])
+#     m = (py5.width - W * A) / 2
+#     vs = np.array([(m + i * W + W / 2,
+#          m + j * W + W / 2,
+#          k * W + W * 2 * py5.os_noise(i * step, j * step))
+#         for i, j, k in product(range(A), range(B), range(C))
+#     ])
+#     
+#     i_vals, j_vals, k_vals = np.meshgrid(np.arange(A), np.arange(B), np.arange(C), indexing='ij')
+#     i_flat = i_vals.flatten()
+#     j_flat = j_vals.flatten()
+#     k_flat = k_vals.flatten()
+#     noise_vals = py5.os_noise(i_flat * step, j_flat * step)  # vectorized noise call
+#     vs = np.column_stack([
+#         m + i_flat * W + W / 2,
+#         m + j_flat * W + W / 2,
+#         k_flat * W + W * 2 * noise_vals
+#     ])    
     
-    i_vals, j_vals, k_vals = np.meshgrid(np.arange(A), np.arange(B), np.arange(C), indexing='ij')
-    i_flat = i_vals.flatten()
-    j_flat = j_vals.flatten()
-    k_flat = k_vals.flatten()
-    noise_vals = py5.os_noise(i_flat * step, j_flat * step)  # vectorized noise call
+    i_vals, j_vals, k_vals = np.mgrid[0:A, 0:B, 0:C]
+    noise_vals = py5.os_noise(i_vals.ravel() * step, j_vals.ravel() * step)
     vs = np.column_stack([
-        m + i_flat * W + W / 2,
-        m + j_flat * W + W / 2,
-        k_flat * W + W * 2 * noise_vals
-    ])    
+        m + i_vals.ravel() * W + W / 2,
+        m + j_vals.ravel() * W + W / 2,
+        k_vals.ravel() * W + W * 2 * noise_vals
+    ])
     
     faces =[]
     for i, j in product(range(A), range(B)):
