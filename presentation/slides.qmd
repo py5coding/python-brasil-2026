@@ -4,33 +4,193 @@ subtitle: "NumPy na programação criativa"
 author: "Alexandre Villares & James Schmitz"
 format:
   revealjs:
-    # theme: default
-    # theme: moon
-    theme: night
-    transition: slide
+    css: pybr2026-reveal.css
+    width: 1280
+    height: 720
+    margin: 0.08
     slide-number: true
-    code-line-numbers: true
-    code-copy: hover
-    css: pybr2026.css
 execute:
   echo: true
   freeze: auto
 ---
 
+## Agenda
+
+- Who are we?
+- Introduction to Creative Coding?
+- Basic concepts of the NumPy library
+- NumPy and Image Pixels
+- NumPy and Vectorized Operations
+- NumPy in Simulations
+- Wrap-up and Questions
+
+::: notes
+Speaker Notes
+:::
+
+# Introduction to the context of creative coding & py5
+
+## Por qual motivo um artista deveria programar?
+
+![](images/john-simon-jr-quote.png){width="800"}
+
+::: notes
+Creative Coding is the practice of writing software as a form of creative expression. The "Creative Coding" world includes people outside of professional software developers. It includes beginner coders, hobbyists, designers, educators, artists, and more.
+:::
+
+## What is py5?
+
+![](images/times-square-river-is-a-circle.png)
+
+::: notes
+TODO: add a code example slide? Turn this into two slides?
+
+In this presentation we will use the Python library py5. This library is used extensively in educational settings and also to create art.
+:::
+
+# Basic concepts of the NumPy library
+
+## Vectorized / Broadcast Operations
+
+```{python}
+#| output-location: fragment
+nums = [1, 2, 3, 4, 5]  # a Python list
+nums * 2
+```
+
+```{python}
+#| output-location: fragment
+import numpy as np
+
+a = np.array([1, 2, 3, 4, 5])
+a * 2
+```
+
+```{python}
+#| output-location: fragment
+a / 2
+```
+
+```{python}
+#| output-location: fragment
+a ** 2 + 3 * a - 4
+```
+
+```{python}
+#| output-location: fragment
+np.sin(a)
+```
+
+::: notes
+NOTE: in this slide the code block outputs will appear one at a time after hitting the space bar.
+:::
+
+## Masking & Array Indexing
+
+```{python}
+#| output-location: fragment
+import numpy as np
+
+b = np.array([0, 10, 20, 30, 40])
+idxs = np.array([1, 2, 4])
+b[idxs]
+```
+
+```{python}
+#| output-location: fragment
+mask = [True, False, True, True, False]
+b[mask]
+```
+
+```{python}
+#| output-location: fragment
+b > 20
+```
+
+```{python}
+#| output-location: fragment
+b[b > 20]
+```
+
+```{python}
+#| output-location: fragment
+b[b / 10 % 2 == 0]
+```
+
+::: notes
+NOTE: in this slide the code block outputs will appear one at a time after hitting the space bar.
+:::
+
+# How NumPy is used to represent image pixels
+
+```{python}
+#| eval: false
+#| code-line-numbers: "|7-8|10-12|14"
+
+import py5
+import numpy as np
+
+def setup():
+    py5.size(900, 600)
+    w, h = py5.width, py5.height
+    R = np.linspace(0, 255, w).reshape(1, -1)
+    G = np.linspace(0, 255, h).reshape(-1, 1)
+    B = np.random.uniform(128, 255, (h, w))
+    A = np.array([[128 + py5.dist(w /2, h / 2, x, y) % 128
+                   for x in range(w)]
+                   for y in range(h)])
+    rgba = np.dstack(np.broadcast_arrays(R, G, B, A))
+    img = py5.create_image_from_numpy(rgba, 'RGBA')
+    py5.image(img, 0, 0)
+
+py5.run_sketch()
+```
+
+::: notes
+NOTE: in this slide the code block will not execute. We will need to switch to
+a terminal and run a command. This code cannot run in pyodide because of py5 and
+we don't want it to execute when I start the presentation because then it would
+open a whole bunch of slides.
+
+The code-line-numbers bit can highlight specific lines that we can step through
+in the presentation. 
+:::
+
+
+# Using "noise" in vectorized operations
+
+```{python}
+#| eval: false
+#| code-line-numbers: "|13-16|18-27|29-33|35-45|48"
+{{< include ../examples/vectorized_random_vs_noise.py >}}
+```
+
+::: notes
+NOTE: in this slide the code block will not execute. We will need to switch to
+a terminal and run a command. Using an include statement is useful and keeps
+everything in sync.
+
+The code-line-numbers will scroll for us because the code is too big for the slide.
+:::
+
+# NumPy in Simulations
+
+# Wrap-up and Questions
+
 # New Section
 
 ## New Slide
 
-* Bullet
-* Points
-* On
-* Slide
+- Bullet
+- Points
+- On
+- Slide
 
-::: {.notes}
+::: notes
 Speaker Notes
 :::
 
----
+------------------------------------------------------------------------
 
 New Slide with code and no header
 
