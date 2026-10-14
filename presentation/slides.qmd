@@ -210,9 +210,17 @@ Esperamos que depois disso você nos acredite que, mesmo sem grandes conheciment
 
 # Mais um obrigado! <br>*Thank you again!*
 
-## Para saber mais... *To know more...*
+## Para mais sobre nós & py5... <br>*For more about us & py5...*
 
-links here
+
+- Main: https://py5coding.com/
+- Forum: https://github.com/py5coding/py5generator/discussions/
+- Mastodon: https://fosstodon.org/@py5coding
+
+::: notes
+Links are not looking nice...
+:::
+
 
 ## New Slide
 
