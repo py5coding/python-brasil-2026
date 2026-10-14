@@ -1,6 +1,6 @@
 ---
-title: "Arte com matrizes"
-subtitle: "NumPy na programação criativa"
+title: "Arte com matrizes: <br>NumPy na programação criativa"
+subtitle: "<i>Art with matrices: NumPy in Creative Coding</i>"
 author: "Alexandre Villares & James Schmitz"
 format:
   revealjs:
@@ -16,21 +16,26 @@ execute:
 
 ## Agenda
 
-- Who are we?
-- Introduction to Creative Coding?
-- Basic concepts of the NumPy library
-- NumPy and Image Pixels
-- NumPy and Vectorized Operations
-- NumPy in Simulations
-- Wrap-up and Questions
+- **Quem somos?** <br>*Who are we?*
+- **Programação Criativa?** <br>*Creative Coding?*
+- **Conceitos básicos de NumPy** <br> *Basic concepts of the NumPy library*
+- **NumPy & Pixels**
+- **NumPy & Operações Vetorizadas** <br> *Numpy & Vectorized Operations*
+- **NumPy & Simulações** <br> *NumPy & Simulations*
+- **Encerramento e Perguntas** <br> *Wrap-up and Questions*
 
 ::: notes
 Speaker Notes
 :::
 
-# Introduction to the context of creative coding & py5
+# O contexto da programação criativa & py5 <br>*the context of creative coding & py5*
 
-## Por qual motivo um artista deveria programar?
+## Essas práticas artísticas tem muitos nomes! *These artistic practices have many names!* 
+
+![](images/creative_code_cover.png){width="1200"}
+
+
+## Por qual motivo um artista deveria programar? *Why should an artist program?*
 
 ![](images/john-simon-jr-quote.png){width="800"}
 
@@ -42,9 +47,10 @@ John Simon, Jr. *Authorship, Creativity, and Code*
 Creative Coding is the practice of writing software as a form of creative expression. The "Creative Coding" world includes people outside of professional software developers. It includes beginner coders, hobbyists, designers, educators, artists, and more.
 :::
 
-## What is py5?
+## O que é py5? *What is py5?*
 
-Creative Coding Framework
+Um *framework* para programaçaõ criativa.
+*A Creative Coding framework*
 
 ::: notes
 TODO: add simple example here
@@ -65,7 +71,7 @@ The River is a Circle (Times Square Edition) by Marina Zurkow & James Schmitz.
 (photo courtesy of Times Square Alliance)
 :::
 
-# Basic concepts of the NumPy library
+# Conceitos básicos de Numpy *Basic concepts of the NumPy library*
 
 ## Vectorized / Broadcast Operations
 
@@ -192,9 +198,21 @@ The code-line-numbers will scroll for us because the code is too big for the sli
 
 # NumPy in Simulations
 
-# Wrap-up and Questions
+# Encerramento <br>*Wrap-up*
 
-# New Section
+Esperamos que depois disso você nos acredite que, mesmo sem grandes conhecimentos de computação científica ou ciência de dados, todo mundo pode usar bibliotecas Python avançadas para criar uma grande variedade de coisas!
+
+*We hope that after this you belive us that even without deep knowledge of scientific computing or data science, we can all use advanced Python libraries to create a wide variety of things!*
+
+# Obrigado! *Thank you!*
+
+# Perguntas! *Questions!*
+
+# Mais um obrigado! <br>*Thank you again!*
+
+## Para saber mais... *To know more...*
+
+links here
 
 ## New Slide
 
