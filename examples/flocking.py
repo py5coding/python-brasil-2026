@@ -119,7 +119,7 @@ class Flock:
 
         cohesion_force = constrain_magnitude(steer, self.max_acceleration)
 
-        # ---------------------------------------------------------------------
+        # aggregate forces and calculate new position
         acceleration = 1.5 * separation_force + alignment_force + cohesion_force
         self.velocity += acceleration
 
