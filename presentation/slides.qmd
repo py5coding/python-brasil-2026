@@ -183,10 +183,14 @@ NOTE: in this slide the code block outputs will appear one at a time after hitti
 # Como NumPy é usado para representar pixels de uma imagem <br>*How NumPy is used to represent image pixels*
 
 
-## Vejamos uma imagem comum feita de pixels
+## Vejamos uma imagem comum feita de pixels{background-image="images/original-swimming-pool.png" background-size="cover"}
 
 *Let's have a look at a common raster image*
 
+
+## Carregando uma imagem e olhando os pixels como um array NumPy
+
+*Loading an imagem and looking at the pixels as a NumPy array.
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -235,6 +239,30 @@ py5.run_sketch()
 
 :::
 ::::
+
+## {.credit-slide background-image="images/red-blue-swimming-pool.png" background-size="cover"}
+
+## Um filtro de saturação na unha!
+*A saturation filter from scratch*
+
+
+:::: {.columns}
+::: {.column width="40%"}
+
+![](images/saturated-swimming-pool.png)
+
+:::
+::: {.column width="60%"}
+
+```{python}
+#| eval: false
+{{< include ../examples/pixel-array-saturation.py >}}
+```
+
+:::
+::::
+
+## {.credit-slide background-image="images/saturated-swimming-pool.png" background-size="cover"}
 
 
 ## Uma imagem direto de um array Numpy!
@@ -346,14 +374,3 @@ Esperamos que depois disso você nos acredite que, mesmo sem grandes conheciment
 . . .
 
 <h2>FAÇAM PERGUNTAS! <i>ASK QUESTIONS!</i><h2>
-
-
-------------------------------------------------------------------------
-
-New Slide with code and no header
-
-```{python}
-import numpy as np
-
-np.random.rand(10)
-```
