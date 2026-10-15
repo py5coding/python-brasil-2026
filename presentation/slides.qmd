@@ -291,26 +291,50 @@ Pillow, Raster.io, OpenCV...
 {{< include ../examples/OpenCV_and-NumPy.py >}}
 ```
 
-
 # Usando "ruído" em operações vetoriazadas <br>*Using "noise" in vectorized operations*
 
 ## Primeiro, qual a diferença entre "ruído" e "aleatório"?
 
-*First, what is the difference between "noise" and "random"?
+*First, what is the difference between "noise" and "random"?*
+
+:::: {.columns}
+::: {.column width="40%"}
+
+![](images/random-vs-noise.png)
+
+:::
+::: {.column width="60%"}
 
 ```{python}
 #| eval: false
-#| code-line-numbers: "|13-16|18-27|29-33|35-45|48"
 {{< include ../examples/vectorized_random_vs_noise.py >}}
 ```
 
-::: notes
-NOTE: in this slide the code block will not execute. We will need to switch to
-a terminal and run a command. Using an include statement is useful and keeps
-everything in sync.
-
-The code-line-numbers will scroll for us because the code is too big for the slide.
 :::
+::::
+
+---
+
+Agora um exemplo avaçado que usa uma grade 2D de posições e mapeia os valores em uma paleta que é um array de cores...
+
+
+:::: {.columns}
+::: {.column width="40%"}
+
+![](images/colorful-noise.png)
+
+:::
+::: {.column width="60%"}
+
+```{python}
+#| eval: false
+{{< include ../examples/color-map.py >}}
+```
+
+:::
+::::
+
+
 
 # NumPy in Simulations
 
