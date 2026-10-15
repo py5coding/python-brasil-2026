@@ -10,8 +10,6 @@ cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, VIDEO_WIDTH)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, VIDEO_HEIGHT)
 
-py5_img = None
-
 
 def setup():
     global py5_img
@@ -28,7 +26,7 @@ def draw():
     frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
     alpha = np.where(frame_gray < 128, 255, 0)
     # combine frame with alpha channel
-    frame_w_alpha = np.dstack([frame, alpha])
+    frame_w_alpha = np.dstack([frame, alpha]).astype(np.uint8)
     # update image with new pixels
     py5_img.set_np_pixels(frame_w_alpha, bands="BGRA")
     # red background visible through parts of the webcam image
