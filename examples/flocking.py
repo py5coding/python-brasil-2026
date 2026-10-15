@@ -67,20 +67,16 @@ class Flock:
         distances = np.hypot(dx, dy)
 
         # Compute common distance masks
-        # TODO: decypher this?
-        mask_0 = distances > 0
-        mask_1 = distances < 25
-        mask_2 = distances < 50
-        mask_1 *= mask_0
-        mask_2 *= mask_0
-        mask_3 = mask_2
-        mask_1_count = np.maximum(mask_1.sum(axis=1), 1)
-        mask_2_count = np.maximum(mask_2.sum(axis=1), 1)
-        mask_3_count = mask_2_count
-        self.neighbor_count = mask_2_count
+        separation_mask = (0 < distances) * (distances < 25)
+        alignment_mask = (0 < distances) * (distances < 50)
+        cohesion_mask = alignment_mask
+        separation_count = np.maximum(separation_mask.sum(axis=1), 1)
+        alignment_count = np.maximum(alignment_mask.sum(axis=1), 1)
+        cohesion_count = alignment_count
+        self.neighbor_count = alignment_count
 
         # Separation Force, keeps boids from getting too close
-        mask, count = mask_1, mask_1_count
+        mask, count = separation_mask, separation_count
         target = np.dstack((dx, dy))
         target = np.divide(
             target,
@@ -96,8 +92,9 @@ class Flock:
         separation_force = constrain_magnitude(steer, self.max_acceleration)
 
         # Alignment Force, keeps neighboring boids moving
-        # in the same direction
-        mask, count = mask_2, mask_2_count
+        # in the same direction. Each boid's direction
+        # is the average of its neighbors
+        mask, count = alignment_mask, alignment_count
         target = np.dot(mask, self.velocity) / count.reshape(n, 1)
 
         # Compute steering
@@ -110,7 +107,8 @@ class Flock:
         alignment_force = constrain_magnitude(steer, self.max_acceleration)
 
         # Cohesion Force, keeps neighboring boids together
-        mask, count = mask_3, mask_3_count
+        # Boids steer towards the average neighbor position
+        mask, count = cohesion_mask, cohesion_count
         target = np.dot(mask, self.position) / count.reshape(n, 1)
 
         # Compute steering
