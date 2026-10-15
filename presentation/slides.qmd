@@ -188,7 +188,7 @@ NOTE: in this slide the code block outputs will appear one at a time after hitti
 *Let's have a look at a common raster image*
 
 
-![](images/original-swimming-pool.png){width="1200"}
+![](images/original-swimming-pool.png){.nostretch width="50%"}
 
 . . .
 
@@ -214,7 +214,7 @@ py5.run_sketch()
 Manipulando fatias do array!
 *Manipulating array slices!*
 
-![](images/red-blue-swimming-pool.png){width="1200"}
+![](images/red-blue-swimming-pool.png){.nostretch width="50%"}
 
 ```{python}
 #| eval: false
@@ -245,7 +245,7 @@ Uma imagem direto de um array Numpy!
 *An image straight from a NumPy array!*
 
 
-![](images/circles.png){width="1000"}
+![](images/circles.png){.nostretch width="50%"}
 
 . . .
 
@@ -285,7 +285,11 @@ in the presentation.
 
 Pillow, Raster.io, OpenCV...
 
-[Running the OpenCV example]
+```{python}
+#| eval: false
+#| code-line-numbers: "|13-16|18-27|29-33|35-45|48"
+{{< include ../examples/OpenCV_and-NumPy.py >}}
+```
 
 
 # Usando "ruído" em operações vetoriazadas <br>*Using "noise" in vectorized operations*
