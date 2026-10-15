@@ -9,145 +9,149 @@
 import numpy as np
 import py5
 
+WIDTH = 650
+HEIGHT = 650
+BOID_COUNT = 500
+BOID_SIZE = 10
+
+
+def constrain_magnitude(v, max_mag, *, min_mag=0.0):
+    norm = np.linalg.norm(v, axis=1, keepdims=True)
+    np.multiply(
+        v,
+        max_mag / norm,
+        out=v,
+        where=norm > max_mag,
+    )
+
+    if min_mag > 0:
+        np.multiply(
+            v,
+            min_mag / norm,
+            out=v,
+            where=norm < min_mag,
+        )
+
+    return v
+
 
 class Flock:
-    def __init__(self, count, width, height):
+    def __init__(self, boid_count, width, height):
         self.width = width
         self.height = height
         self.min_velocity = 0.5
         self.max_velocity = 2.0
         self.max_acceleration = 0.03
-        self.velocity = np.zeros((count, 2), dtype=np.float32)
-        self.position = np.zeros((count, 2), dtype=np.float32)
-        self.norm = 0
-        angle = np.random.uniform(0, 2 * np.pi, count)
+        self.velocity = np.zeros((boid_count, 2), dtype=np.float32)
+        self.position = np.zeros((boid_count, 2), dtype=np.float32)
+
+        # initial random velocity
+        angle = np.random.uniform(0, 2 * np.pi, boid_count)
         self.velocity[:, 0] = np.cos(angle)
         self.velocity[:, 1] = np.sin(angle)
-        angle = np.random.uniform(0, 2 * np.pi, count)
-        radius = min(width, height) / 2 * np.random.uniform(0, 1, count)
+
+        # initial random position in circle
+        angle = np.random.uniform(0, 2 * np.pi, boid_count)
+        radius = min(width, height) / 2 * np.random.uniform(0, 1, boid_count)
         self.position[:, 0] = width / 2 + np.cos(angle) * radius
         self.position[:, 1] = height / 2 + np.sin(angle) * radius
 
-    def run(self):
-        position = self.position
-        velocity = self.velocity
-        min_velocity = self.min_velocity
-        max_velocity = self.max_velocity
-        max_acceleration = self.max_acceleration
-        n = len(position)
+    def update(self):
+        # max_acceleration = self.max_acceleration
+        n = len(self.position)
 
-        dx = np.subtract.outer(position[:, 0], position[:, 0])
-        dy = np.subtract.outer(position[:, 1], position[:, 1])
-        distance = np.hypot(dx, dy)
+        # subtract.outer(A, B) calculates the difference between
+        # every value in A with every value in B
+        dx = np.subtract.outer(self.position[:, 0], self.position[:, 0])
+        dy = np.subtract.outer(self.position[:, 1], self.position[:, 1])
+        distances = np.hypot(dx, dy)
 
         # Compute common distance masks
-        mask_0 = distance > 0
-        mask_1 = distance < 25
-        mask_2 = distance < 50
+        # TODO: decypher this?
+        mask_0 = distances > 0
+        mask_1 = distances < 25
+        mask_2 = distances < 50
         mask_1 *= mask_0
         mask_2 *= mask_0
         mask_3 = mask_2
         mask_1_count = np.maximum(mask_1.sum(axis=1), 1)
         mask_2_count = np.maximum(mask_2.sum(axis=1), 1)
         mask_3_count = mask_2_count
-        self.count = mask_2_count
+        self.neighbor_count = mask_2_count
 
-        # Separation
+        # Separation Force, keeps boids from getting too close
         mask, count = mask_1, mask_1_count
         target = np.dstack((dx, dy))
         target = np.divide(
             target,
-            distance.reshape(n, n, 1) ** 2,
+            distances.reshape(n, n, 1) ** 2,
             out=target,
-            where=distance.reshape(n, n, 1) != 0,
+            where=distances.reshape(n, n, 1) != 0,
         )
         steer = (target * mask.reshape(n, n, 1)).sum(axis=1) / count.reshape(n, 1)
-        norm = np.sqrt((steer * steer).sum(axis=1)).reshape(n, 1)
-        steer = max_velocity * np.divide(steer, norm, out=steer, where=norm != 0)
-        steer -= velocity
+        norm = np.linalg.norm(steer, axis=1, keepdims=True)
+        steer = self.max_velocity * np.divide(steer, norm, out=steer, where=norm != 0)
+        steer -= self.velocity
 
-        # Limit acceleration
-        norm = np.sqrt((steer * steer).sum(axis=1)).reshape(n, 1)
-        steer = np.multiply(
-            steer, max_acceleration / norm, out=steer, where=norm > max_acceleration
-        )
+        separation_force = constrain_magnitude(steer, self.max_acceleration)
 
-        separation = steer
-
-        # Alignment
-        # ---------------------------------------------------------------------
-        # Compute target
+        # Alignment Force, keeps neighboring boids moving
+        # in the same direction
         mask, count = mask_2, mask_2_count
-        target = np.dot(mask, velocity) / count.reshape(n, 1)
+        target = np.dot(mask, self.velocity) / count.reshape(n, 1)
 
         # Compute steering
-        norm = np.sqrt((target * target).sum(axis=1)).reshape(n, 1)
-        target = max_velocity * np.divide(target, norm, out=target, where=norm != 0)
-        steer = target - velocity
-
-        # Limit acceleration
-        norm = np.sqrt((steer * steer).sum(axis=1)).reshape(n, 1)
-        steer = np.multiply(
-            steer, max_acceleration / norm, out=steer, where=norm > max_acceleration
+        norm = np.linalg.norm(target, axis=1, keepdims=True)
+        target = self.max_velocity * np.divide(
+            target, norm, out=target, where=norm != 0
         )
-        alignment = steer
+        steer = target - self.velocity
 
-        # Cohesion
-        # ---------------------------------------------------------------------
-        # Compute target
+        alignment_force = constrain_magnitude(steer, self.max_acceleration)
+
+        # Cohesion Force, keeps neighboring boids together
         mask, count = mask_3, mask_3_count
-        target = np.dot(mask, position) / count.reshape(n, 1)
+        target = np.dot(mask, self.position) / count.reshape(n, 1)
 
         # Compute steering
-        desired = target - position
-        norm = np.sqrt((desired * desired).sum(axis=1)).reshape(n, 1)
-        desired *= max_velocity / norm
-        steer = desired - velocity
+        desired = target - self.position
+        norm = np.linalg.norm(desired, axis=1, keepdims=True)
+        desired *= self.max_velocity / norm
+        steer = desired - self.velocity
 
-        # Limit acceleration
-        norm = np.sqrt((steer * steer).sum(axis=1)).reshape(n, 1)
-        steer = np.multiply(
-            steer, max_acceleration / norm, out=steer, where=norm > max_acceleration
-        )
-        cohesion = steer
+        cohesion_force = constrain_magnitude(steer, self.max_acceleration)
 
         # ---------------------------------------------------------------------
-        acceleration = 1.5 * separation + alignment + cohesion
-        velocity += acceleration
+        acceleration = 1.5 * separation_force + alignment_force + cohesion_force
+        self.velocity += acceleration
 
-        norm = np.sqrt((velocity * velocity).sum(axis=1)).reshape(n, 1)
-        velocity = np.multiply(
-            velocity, max_velocity / norm, out=velocity, where=norm > max_velocity
+        self.velocity = constrain_magnitude(
+            self.velocity, self.max_velocity, min_mag=self.min_velocity
         )
-        velocity = np.multiply(
-            velocity, min_velocity / norm, out=velocity, where=norm < min_velocity
-        )
-        position += velocity
-        self.norm = norm
-        # Wraparound
-        position += (self.width, self.height)
-        position %= (self.width, self.height)
+
+        # update position
+        self.position += self.velocity
+
+        # Wraparound window
+        self.position += (self.width, self.height)
+        self.position %= (self.width, self.height)
+
+
+flock = Flock(BOID_COUNT, WIDTH, HEIGHT)
 
 
 def setup():
-    global flock
-    py5.size(640, 640)
+    py5.size(WIDTH, HEIGHT)
     py5.no_stroke()
-    N = 500
-    flock = Flock(N, py5.width, py5.height)
-
-
 
 
 def draw():
     py5.background(0)
-    flock.run()
-    # should we have multi-colored boids like this?
-    # maybe this other drawing ideas from
-    # https://github.com/py5coding/py5generator/discussions/805#discussioncomment-18547220
-    red_mask = flock.count > 30
-    orange_mask = (20 < flock.count) * (flock.count <= 30)
-    yellow_mask = flock.count <= 20
+    flock.update()
+
+    red_mask = flock.neighbor_count > 30
+    orange_mask = (20 < flock.neighbor_count) * (flock.neighbor_count <= 30)
+    yellow_mask = flock.neighbor_count <= 20
     draw_boids(flock, red_mask, "red")
     draw_boids(flock, orange_mask, "orange")
     draw_boids(flock, yellow_mask, "yellow")
@@ -156,14 +160,14 @@ def draw():
 def draw_boids(flock, mask, fill_color):
     position = flock.position[mask]
     velocity = flock.velocity[mask]
-    boid_length = 10
+
+    # calculate the 3 vertices of each boid symbol
     norm_vel = velocity / np.linalg.norm(velocity, axis=1, keepdims=True)
-    heading = norm_vel * boid_length
-    perpend_a = norm_vel[:, ::-1].copy() * (boid_length / 3)
+    heading = norm_vel * BOID_SIZE
+    perpend_a = norm_vel[:, ::-1].copy() * (BOID_SIZE / 3)
     perpend_a[:, 0] = -perpend_a[:, 0]
-    perpend_b = norm_vel[:, ::-1].copy() * (boid_length / 3)
+    perpend_b = norm_vel[:, ::-1].copy() * (BOID_SIZE / 3)
     perpend_b[:, 1] = -perpend_b[:, 1]
-    # the arrow points
     right_points = position + perpend_a
     left_points = position + perpend_b
     head_points = position + heading
@@ -174,10 +178,4 @@ def draw_boids(flock, mask, fill_color):
         py5.vertices(triangles)  # type: ignore
 
 
-def key_pressed():
-    py5.window_title(f"{py5.get_frame_rate():.1f}")
-    print(flock.count.shape, "flock.count")
-    print((flock.count < 50).shape, "flock.count < 50")
-
-
-py5.run_sketch(block=False)
+py5.run_sketch()
