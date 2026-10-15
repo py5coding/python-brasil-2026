@@ -9,3 +9,8 @@ dependencies = [
     "pykernel>=0.1.6",
     "scipy>=1.18.1",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.17.1",
+]
