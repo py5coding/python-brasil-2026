@@ -38,12 +38,16 @@ Speaker Notes
 
 # O contexto da programação criativa & py5 <br>*the context of creative coding & py5*
 
-## Essas práticas artísticas tem muitos nomes! *These artistic practices have many names!* 
+## Essas práticas artísticas tem muitos nomes!
+
+*These artistic practices have many names!*
 
 ![](images/creative_code_cover.png){width="1200"}
 
 
-## Por qual motivo um artista deveria programar? *Why should an artist program?*
+## Por qual motivo um artista deveria programar?
+
+*Why should an artist program?*
 
 ![](images/john-simon-jr-quote-page.png){width="800"}
 
@@ -87,7 +91,9 @@ The River is a Circle (Times Square Edition) by Marina Zurkow & James Schmitz.
 
 # Conceitos básicos de Numpy *Basic concepts of the NumPy library*
 
-## Vectorized / Broadcast Operations
+## Operações vetorizadas e *broadcast*
+
+*Vectorized / Broadcast Operations*
 
 ```{python}
 #| output-location: fragment
@@ -128,7 +134,9 @@ np.sin(a)
 NOTE: in this slide the code block outputs will appear one at a time after hitting the space bar.
 :::
 
-## Máscaras e indexação com arrays *Masking & Array Indexing*
+## Máscaras e indexação com arrays
+
+*Masking & Array Indexing*
 
 ```{python}
 #| output-location: fragment
@@ -167,7 +175,9 @@ NOTE: in this slide the code block outputs will appear one at a time after hitti
 # Como NumPy é usado para representar pixels de uma imagem <br>*How NumPy is used to represent image pixels*
 
 
-## Vejamos uma imagem comum feita de pixels <br>*Let's have a look at a common raster image*
+## Vejamos uma imagem comum feita de pixels
+
+*Let's have a look at a common raster image*
 
 
 ![](images/original-swimming-pool.png)
@@ -192,12 +202,14 @@ py5.run_sketch()
 ```
 
 
-## Manipulando fatias do array! <br>*Manipulating array slices!*
+## Manipulando fatias do array!
+
+*Manipulating array slices!*
 
 
+## Criando uma imagem nova a partir de um array Numpy!
 
-
-## Criando uma imagem nova a partir de um array Numpy! *Creating a new image from a NumPy array!*
+*Creating a new image from a NumPy array!*
 
 ```{python}
 #| eval: false
@@ -224,7 +236,8 @@ py5.run_sketch()
 
 . . .
 
-[The image result goes here]
+![](images/circle.png)
+
 . . .
 
 ::: notes
@@ -237,7 +250,9 @@ The code-line-numbers bit can highlight specific lines that we can step through
 in the presentation. 
 :::
 
-## And this is how other libraies in the Python ecossystem do it too!
+## E é assim que outras bibliotecas do ecossistema Python fazem também!
+
+*And this is how other libraies in the Python ecossystem do it too!*
 
 Pillow, Raster.io, OpenCV...
 
@@ -245,6 +260,10 @@ Pillow, Raster.io, OpenCV...
 
 
 # Usando "ruído" em operações vetoriazadas <br>*Using "noise" in vectorized operations*
+
+## Primeiro, qual a diferença entre "ruído" e "aleatório"?
+
+*First, what is the difference between "noise" and "random"?
 
 ```{python}
 #| eval: false
