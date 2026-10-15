@@ -7,10 +7,9 @@ def setup():
     img_path = 'swimming-pool.png' 
     img = py5.load_image(img_path)
     img.load_np_pixels()
-    print(img.np_pixels.shape) # shape is (400, 800, 4)
-    pa = img.np_pixels 
-    pa[:, 400:, 1] = 0
-    pa[:, :, 2] = 0
+    pixels_arrays = img.np_pixels  # shape is (400, 800, 4)
+    pixels_arrays[:, 400:, 1] = 0
+    pixels_arrays[:, :, 2] = 0
     img.update_np_pixels()
     py5.image(img, 0, 0)
     
