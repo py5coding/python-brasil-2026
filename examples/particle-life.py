@@ -9,11 +9,18 @@ WIDTH = 800
 HEIGHT = 800
 
 PARTICLE_COUNT = 200
-SPECIES_COUNT = 5
-COLOR_STEP = 256 / SPECIES_COUNT
+ESPECIE_COUNT = 5
+COLOR_STEP = 256 / ESPECIE_COUNT
 INTERACTION_DIST = 100
 SIZE_SQR = 10  # "squared" particle size
-force_rules = np.random.uniform(-3, 3, (SPECIES_COUNT, SPECIES_COUNT))
+OPPOSITES_ATTRACT_BIAS = -1
+SAME_SPECIES_BIAS = 1
+
+# positive numbers attract, negative repel
+attraction_rules = np.random.uniform(-3, 3, (ESPECIE_COUNT, ESPECIE_COUNT))
+# apply biases to attraction rules
+attraction_rules += SAME_SPECIES_BIAS * np.eye(ESPECIE_COUNT, ESPECIE_COUNT)
+attraction_rules += OPPOSITES_ATTRACT_BIAS * (1 - np.eye(ESPECIE_COUNT, ESPECIE_COUNT))
 
 
 class Particle:
@@ -23,7 +30,7 @@ class Particle:
 
         self.pos = np.array([py5.random(width), py5.random(height)])
         self.vel = np.array([py5.random(-1, 1), py5.random(-1, 1)])
-        self.especie = int(py5.random(SPECIES_COUNT))
+        self.especie = int(py5.random(ESPECIE_COUNT))
 
     def update(self, tree):
         self.pos = (self.pos + self.vel) % (self.width, self.height)
@@ -37,14 +44,14 @@ class Particle:
             if dsq < INTERACTION_DIST**2:
                 if dsq < SIZE_SQR:
                     # prevent particles from being too close together
-                    m = py5.remap(dsq, 0, SIZE_SQR, 1, 0)
-                    force_mag = m
+                    force_mag = py5.remap(dsq, 0, SIZE_SQR, 1, 0)
                 else:
                     # attraction force is stronger for particles that
                     # are farther apart
-                    m = py5.remap(dsq, 0, INTERACTION_DIST**2, 0.001, 0)
-                    lm = force_rules[self.especie][other.especie] * m
-                    force_mag = lm
+                    force_mag = -(
+                        py5.remap(dsq, 0, INTERACTION_DIST**2, 0.001, 0)
+                        * attraction_rules[self.especie][other.especie]
+                    )
 
                 self.vel += force * force_mag
 
