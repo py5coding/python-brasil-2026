@@ -117,7 +117,7 @@ np.sin(a)
 NOTE: in this slide the code block outputs will appear one at a time after hitting the space bar.
 :::
 
-## Masking & Array Indexing
+## Máscaras e indexação com arrays *Masking & Array Indexing*
 
 ```{python}
 #| output-location: fragment
@@ -153,7 +153,21 @@ b[b / 10 % 2 == 0]
 NOTE: in this slide the code block outputs will appear one at a time after hitting the space bar.
 :::
 
-# How NumPy is used to represent image pixels
+# Como NumPy é usado para representar pixels de uma imagem <br>*How NumPy is used to represent image pixels*
+
+
+## Vejamos uma imagem comum feita de pixels <br>*Let's have a look at a common raster image*
+
+
+[original swimming pool image here]
+
+. . .
+
+Show code that loads image and print the array shape.
+
+## Manipulando fatias do array! <br>*Manipulating array slices!*
+
+## Criando uma imagem nova a partir de um array Numpy! *Creating a new image from a NumPy array!*
 
 ```{python}
 #| eval: false
@@ -177,6 +191,11 @@ def setup():
 
 py5.run_sketch()
 ```
+
+. . .
+
+[The image result goes here]
+. . .
 
 ::: notes
 NOTE: in this slide the code block will not execute. We will need to switch to
