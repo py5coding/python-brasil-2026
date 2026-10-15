@@ -28,6 +28,14 @@ execute:
 Speaker Notes
 :::
 
+# Quem somos? <br>*Who are we?*
+
+
+- Jim
+
+- Alexandre
+
+
 # O contexto da programação criativa & py5 <br>*the context of creative coding & py5*
 
 ## Essas práticas artísticas tem muitos nomes! *These artistic practices have many names!* 
@@ -36,6 +44,10 @@ Speaker Notes
 
 
 ## Por qual motivo um artista deveria programar? *Why should an artist program?*
+
+![](images/john-simon-jr-quote-page.png){width="800"}
+
+---
 
 ![](images/john-simon-jr-quote.png){width="800"}
 
