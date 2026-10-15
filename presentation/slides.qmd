@@ -101,7 +101,6 @@ nums * 2
 nums / 2
 ```
 
-
 ```{python}
 #| output-location: fragment
 import numpy as np
@@ -171,11 +170,27 @@ NOTE: in this slide the code block outputs will appear one at a time after hitti
 ## Vejamos uma imagem comum feita de pixels <br>*Let's have a look at a common raster image*
 
 
-[original swimming pool image here]
-
+![](images/original-swimming-pool.png)
 . . .
 
-Show code that loads image and print the array shape.
+
+
+```{python}
+#| eval: false
+import numpy as np
+import py5
+
+def setup():
+    py5.size(800, 400)
+    py5.background(0)
+    img_path = 'piscina.png'
+    img = py5.load_image(img_path)
+    img.load_np_pixels()
+    print(img.np_pixels.shape)
+
+py5.run_sketch()
+```
+
 
 ## Manipulando fatias do array! <br>*Manipulating array slices!*
 
