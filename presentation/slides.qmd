@@ -167,6 +167,9 @@ Show code that loads image and print the array shape.
 
 ## Manipulando fatias do array! <br>*Manipulating array slices!*
 
+
+
+
 ## Criando uma imagem nova a partir de um array Numpy! *Creating a new image from a NumPy array!*
 
 ```{python}
@@ -207,8 +210,14 @@ The code-line-numbers bit can highlight specific lines that we can step through
 in the presentation. 
 :::
 
+## And this is how other libraies in the Python ecossystem do it too!
 
-# Using "noise" in vectorized operations
+Pillow, Raster.io, OpenCV...
+
+[Running the OpenCV example]
+
+
+# Usando "ruído" em operações vetoriazadas <br>*Using "noise" in vectorized operations*
 
 ```{python}
 #| eval: false
@@ -225,6 +234,14 @@ The code-line-numbers will scroll for us because the code is too big for the sli
 :::
 
 # NumPy in Simulations
+
+## Partículas! *Particles!*
+
+
+## *Flocking*: Cardumes e revoadas
+
+
+## E tantas outras coisas! *And so much more!*
 
 # Encerramento <br>*Wrap-up*
 
