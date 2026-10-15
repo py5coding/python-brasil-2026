@@ -81,8 +81,6 @@ The River is a Circle (Times Square Edition) by Marina Zurkow & James Schmitz
 ::: notes
 The River is a Circle (Times Square Edition) by Marina Zurkow & James Schmitz.
 (photo courtesy of Times Square Alliance)
-
-[A] Should I add another example of "real" work done with py5? Nothing will be quite as impressive as The River is a Circle...
 :::
 
 
@@ -97,6 +95,7 @@ design de Alexandre Villares e Elaine Ramos
 
 ## {.credit-slide background-image="images/many-covers.gif" background-size="cover"}
 
+![](images/cover-credits.png){width="800"}
 
 # Conceitos básicos de Numpy *Basic concepts of the NumPy library*
 
