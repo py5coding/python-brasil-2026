@@ -204,7 +204,8 @@ def setup():
     img_path = 'piscina.png'
     img = py5.load_image(img_path)
     img.load_np_pixels()
-    print(img.np_pixels.shape) # (400, 800, 4)
+    pixels_array = img.np_pixels     
+    print(pixels_array.shape) # (400, 800, 4)
 
 py5.run_sketch()
 ```
@@ -228,9 +229,9 @@ def setup():
     img = py5.load_image(img_path)
     img.load_np_pixels()
     print(img.np_pixels.shape) # shape is (400, 800, 4)
-    pa = img.np_pixels
-    pa[:, 400:, 1] = 0
-    pa[:, :, 2] = 0
+    pixels_array = img.np_pixels
+    pixels_array[:, 400:, 1] = 0
+    pixels_array[:, :, 2] = 0
     img.update_np_pixels()
     py5.image(img, 0, 0)
 
@@ -245,33 +246,22 @@ Uma imagem direto de um array Numpy!
 *An image straight from a NumPy array!*
 
 
-![](images/circles.png){.nostretch width="50%"}
+:::: {.columns}
+::: {.column width="40%"}
 
-. . .
+![](images/circles.png)
 
+:::
+::: {.column width="60%"}
 
 ```{python}
 #| eval: false
 #| code-line-numbers: "|7-8|10-12|14"
-
-import py5
-import numpy as np
-
-def setup():
-    py5.size(900, 600)
-    w, h = py5.width, py5.height
-    R = np.linspace(0, 255, w).reshape(1, -1)
-    G = np.linspace(0, 255, h).reshape(-1, 1)
-    B = np.random.uniform(128, 255, (h, w))
-    A = np.array([[128 + py5.dist(w /2, h / 2, x, y) % 128
-                   for x in range(w)]
-                   for y in range(h)])
-    rgba = np.dstack(np.broadcast_arrays(R, G, B, A))
-    img = py5.create_image_from_numpy(rgba, 'RGBA')
-    py5.image(img, 0, 0)
-
-py5.run_sketch()
+{{< include ../examples/concentric_colorful_circles.py >}}
 ```
+
+:::
+::::
 
 ::: notes
 
