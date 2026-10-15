@@ -40,9 +40,12 @@ def draw():
     py5.lines(np.column_stack([
         all_xs,   # xa
         base_ys,  # ya (all start at height/2)
-        all_xs,                              # xb (same as xa)
-        noise_ys                               # yb (from noise)
+        all_xs,   # xb (same as xa)
+        noise_ys  # yb (from noise)
     ]))
 
-
+def key_pressed():
+    if py5.key == 's':
+        py5.save_frame('###.png')
+        
 py5.run_sketch()
