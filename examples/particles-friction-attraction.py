@@ -3,14 +3,15 @@ import py5
 
 N = 1000
 WIDTH, HEIGHT = 600, 400
-step = 0.2
-friction_factor = 1 - 0.001
+ACCELERATION_SCALE = 4
+VELOCITY_SCALE = 0.25
+FRICTION_FACTOR = 1 - 0.001
 
-pos = np.random.uniform([0, 0], [WIDTH, HEIGHT], size=(N, 2))  # .astype(np.float32)
-# vel = np.random.uniform(-5, 5, size=(N, 2)) #.astype(np.float32)
-headings = np.random.uniform(0, 2 * np.pi, size=N)
+# set initial positions and velocities
+pos = np.random.uniform([0, 0], [WIDTH, HEIGHT], size=(N, 2))
+initial_headings = np.random.uniform(0, 2 * np.pi, size=N)
 vel = (
-    np.column_stack([np.cos(headings), np.sin(headings)])
+    np.column_stack([np.cos(initial_headings), np.sin(initial_headings)])
     * np.random.uniform(-5, 5, size=N)[:, None]
 )
 
@@ -24,18 +25,19 @@ def draw():
     global pos, vel
     py5.background(240)
 
-    v_mouse = np.array([py5.mouse_x, py5.mouse_y]) - pos  # vector towards mouse
-    squared_mouse_dist = (
-        np.sum(v_mouse * v_mouse, axis=1) + 1
-    )  # avoiding 0s and higher speeds
-    acc = 10 * v_mouse / squared_mouse_dist[:, None]
-    vel = vel + acc * step
-    vel *= friction_factor
-    pos = pos + vel * step
-    pos %= (WIDTH, HEIGHT)  # wrap edges
-    py5.points(pos)  # draw
+    # vectors pointing towards mouse position from each particle
+    v_mouse = np.array([py5.mouse_x, py5.mouse_y]) - pos
+    # attraction force is closest for particles near the mouse
+    acc = v_mouse / (v_mouse**2).sum(axis=1)[:, None]
 
-    py5.window_title(f"{py5.get_frame_rate():f}")
+    # update particle velocity and position
+    vel = vel + ACCELERATION_SCALE * acc
+    vel *= FRICTION_FACTOR
+    pos = pos + VELOCITY_SCALE * vel
+    pos %= (WIDTH, HEIGHT)  # wrap edges
+
+    # draw updated points
+    py5.points(pos)  # type: ignore
 
 
 py5.run_sketch()
