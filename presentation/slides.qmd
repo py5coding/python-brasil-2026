@@ -85,6 +85,13 @@ The River is a Circle (Times Square Edition) by Marina Zurkow & James Schmitz.
 [A] Should I add another example of "real" work done with py5? Nothing will be quite as impressive as The River is a Circle...
 :::
 
+
+## {.credit-slide background-image="4-covers.png" background-size="cover"}
+
+
+## {.credit-slide background-image="many-covers.gif" background-size="cover"}
+
+
 # Conceitos básicos de Numpy *Basic concepts of the NumPy library*
 
 ## Operações vetorizadas e *broadcast*
@@ -164,11 +171,6 @@ b > 20
 b[b > 20]
 ```
 
-```{python}
-#| output-location: fragment
-b[b / 10 % 2 == 0]
-```
-
 ::: notes
 NOTE: in this slide the code block outputs will appear one at a time after hitting the space bar.
 :::
@@ -202,9 +204,9 @@ def setup():
 py5.run_sketch()
 ```
 
+---
 
-## Manipulando fatias do array!
-
+Manipulando fatias do array!
 *Manipulating array slices!*
 
 ![](images/red-blue-swimming-pool.png){width="1200"}
@@ -232,9 +234,16 @@ def setup():
 py5.run_sketch()
 ```
 
-## Uma imagem direto de um array Numpy!
+---
 
+Uma imagem direto de um array Numpy!
 *An image straight from a NumPy array!*
+
+
+![](images/circles.png){width="1000"}
+
+. . .
+
 
 ```{python}
 #| eval: false
@@ -258,12 +267,6 @@ def setup():
 
 py5.run_sketch()
 ```
-
-. . .
-
-![](images/circles.png)
-
-. . .
 
 ::: notes
 
@@ -317,32 +320,16 @@ Esperamos que depois disso você nos acredite que, mesmo sem grandes conheciment
 *We hope that after this you belive us that even without deep knowledge of scientific computing or data science, we can all use advanced Python libraries to create a wide variety of things!*
 
 # Obrigado! *Thank you!*
-
-
 ## Para mais sobre nós & py5... <br>*For more about us & py5...*
 
+- Main: [**py5coding.org**](https://py5coding.org/)
+- Forum: [**github.com/py5coding/py5generator/discussions**](https://github.com/py5coding/py5generator/discussions/)
+- Mastodon: [**fosstodon.org/@py5coding**](https://fosstodon.org/@py5coding)
 
-- Main: https://py5coding.org/
-- Forum: https://github.com/py5coding/py5generator/discussions/
-- Mastodon: https://fosstodon.org/@py5coding
+. . .
 
+<h2>FAÇAM PERGUNTAS! <i>ASK QUESTIONS!</i><h2>
 
-**PERGUNTAS** ***QUESTIONS***
-
-::: notes
-:::
-
-
-## New Slide
-
-- Bullet
-- Points
-- On
-- Slide
-
-::: notes
-Speaker Notes
-:::
 
 ------------------------------------------------------------------------
 
