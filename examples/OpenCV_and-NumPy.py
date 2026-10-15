@@ -1,33 +1,43 @@
-import py5
 import cv2
 import numpy as np
+import py5
+
+VIDEO_WIDTH = 640
+VIDEO_HEIGHT = 480
 
 cap = cv2.VideoCapture(0)
+
+cap.set(cv2.CAP_PROP_FRAME_WIDTH, VIDEO_WIDTH)
+cap.set(cv2.CAP_PROP_FRAME_HEIGHT, VIDEO_HEIGHT)
+
 py5_img = None
 
+
 def setup():
-    py5.size(640, 480)
+    global py5_img
+    py5.size(VIDEO_WIDTH, VIDEO_HEIGHT)
+    py5_img = py5.create_image(VIDEO_WIDTH, VIDEO_HEIGHT, py5.ARGB)
+
 
 def draw():
-    global py5_img
+    # set red background
     py5.background(200, 0, 0)
-    if py5.frame_count % 30 == 0:
-        py5.window_title(f'FR: {py5.get_frame_rate()}')
-    ret, frame = cap.read()  # frame is a numpy array
-    gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
-    edges = cv2.Canny(gray, 100, 80)
-    # create a binary mask for pixels with brightness > 250
-    mask = np.zeros_like(gray)
-    mask[gray < 128] = 255
-    # add transparency to the blended image based on the mask
-    blended_rgb_npa = cv2.cvtColor(frame, cv2.COLOR_BGR2BGRA)
-    blended_rgb_npa[:, :, 3] = mask
-    # display image
-    py5_img = py5.create_image_from_numpy(blended_rgb_npa, 'BGRA', dst=py5_img)
+    # frame is a numpy array dimensions (h, w, 3)
+    _, frame = cap.read()
+    # create alpha mask based on grayscale values
+    frame_gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
+    alpha = np.where(frame_gray < 128, 255, 0)
+    # combine frame with alpha channel
+    frame_w_alpha = np.dstack([frame, alpha])
+    # update image with new pixels
+    py5_img.set_np_pixels(frame_w_alpha, bands="BGRA")
+    # red background visible through parts of the webcam image
     py5.image(py5_img, 0, 0)
 
+
 def exiting():
-    print('over and out')
+    print("Release webcam")
     cap.release()
+
 
 py5.run_sketch()
