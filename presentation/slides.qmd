@@ -69,6 +69,8 @@ The River is a Circle (Times Square Edition) by Marina Zurkow & James Schmitz
 ::: notes
 The River is a Circle (Times Square Edition) by Marina Zurkow & James Schmitz.
 (photo courtesy of Times Square Alliance)
+
+[A] Should I add another example of "real" work done with py5? Nothing will be quite as impressive as The River is a Circle...
 :::
 
 # Conceitos básicos de Numpy *Basic concepts of the NumPy library*
@@ -80,6 +82,13 @@ The River is a Circle (Times Square Edition) by Marina Zurkow & James Schmitz.
 nums = [1, 2, 3, 4, 5]  # a Python list
 nums * 2
 ```
+
+```{python}
+#| error: true
+#| output-location: fragment
+nums / 2
+```
+
 
 ```{python}
 #| output-location: fragment

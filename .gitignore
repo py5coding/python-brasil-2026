@@ -4,3 +4,4 @@ uv.lock
 *.html
 presentation/slides_files/
 _extensions/
+presentation/.slides.qmd.kate-swp
