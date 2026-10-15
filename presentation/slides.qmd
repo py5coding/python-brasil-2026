@@ -84,7 +84,7 @@ The River is a Circle (Times Square Edition) by Marina Zurkow & James Schmitz.
 :::
 
 
-## {.credit-slide background-image="images/4-covers.png" background-size="cover"}
+## {.credit-slide background-image="images/4-covers.png" background-size="contain"}
 
 ::: {.credit-bar}
 Capas da coleção "Pensando Amanhãs" do Museu do Amanhã
@@ -95,7 +95,7 @@ design de Alexandre Villares e Elaine Ramos
 
 ## {.credit-slide background-image="images/many-covers.gif" background-size="cover"}
 
-![](images/cover-credits.png){width="800"}
+![](images/cover-credits.png){.nostretch}
 
 # Conceitos básicos de Numpy *Basic concepts of the NumPy library*
 
