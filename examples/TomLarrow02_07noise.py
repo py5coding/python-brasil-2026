@@ -1,5 +1,3 @@
-import py5
-
 """
 Adapted from Tom Larrow's example: 
 https://codeberg.org/TomLarrow/creative-coding-experiments/src/branch/main/x_0000/x_0057
@@ -9,15 +7,15 @@ A recreation of https://github.com/jdf/processing.py/blob/master/mode/examples/B
 using numpy examples from https://py5coding.org/how_tos/generate_noise_values.html»
 """
 
+import py5
 import numpy as np
 
 # How far apart the noise values will be. Lower numbers are more gradual
 noise_increment = 0.02
 
-
 def setup():
     global mesh_x, mesh_y
-    py5.size(640, 360)
+    py5.size(400, 400)
     # Builds two 2D arrays, mesh_x and mesh_y which have the dimensions of width x height
     # mesh_x has the values of the x position * noise_increment in the x direction, and is
     # duplicated for every y row, mesh_y has the values of the y position * noise_increment in the y
@@ -26,7 +24,6 @@ def setup():
         np.arange(0, py5.width * noise_increment, noise_increment),
         np.arange(0, py5.height * noise_increment, noise_increment),
     )
-
 
 def draw():
     # The next line essentially loops through screen width and the screen height and
@@ -42,6 +39,5 @@ def draw():
     # Write the framerate to the window tile to see the effect of the
     # optimization
     py5.window_title(str(round(py5.get_frame_rate(), 1)))
-
 
 py5.run_sketch()
