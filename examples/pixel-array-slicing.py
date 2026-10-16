@@ -3,7 +3,6 @@ import py5
 
 def setup():
     py5.size(800, 400)
-    py5.background(0)
     img_path = "swimming-pool.png"
     img = py5.load_image(img_path)
     img.load_np_pixels()
