@@ -541,6 +541,8 @@ Uma grade 2D de posições e mapeia os valores em uma paleta que é um array de 
 
 ![](images/trimesh-animation.gif)
 
+[Code using trimesh, NumPy, py5 and noise](https://github.com/hx2A/python-brasil-2026/blob/main/examples/trimesh_and_noise.py)
+
 :::
 ::: {.column width="60%"}
 
