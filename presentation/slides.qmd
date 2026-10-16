@@ -62,7 +62,7 @@ Creative Coding is the practice of writing software as a form of creative expres
 ## O que é py5? *What is py5?*
 
 py5 é uma biblioteca, ou um *framework*, para programação criativa.<br>
-*py5 is a Creative Coding libray/framework.*
+*py5 is a Creative Coding library/framework.*
 
 :::: {.columns}
 ::: {.column width="35%"}
@@ -395,7 +395,7 @@ in the presentation.
 
 ## E é assim que outras bibliotecas do ecossistema Python fazem também!
 
-*And this is how other libraies in the Python ecossystem do it too!*
+*And this is how other libraries in the Python ecosystem do it too!*
 
 Pillow, Raster.io, OpenCV...
 
