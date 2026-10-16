@@ -188,9 +188,9 @@ NOTE: in this slide the code block outputs will appear one at a time after hitti
 *Let's have a look at a common raster image*
 
 
-## Carregando uma imagem e olhando os pixels como um array NumPy
+## Carregando pixels como um array NumPy
 
-*Loading an imagem and looking at the pixels as a NumPy array.
+*Loading the pixels as a NumPy array*
 
 :::: {.columns}
 ::: {.column width="40%"}
@@ -202,12 +202,12 @@ NOTE: in this slide the code block outputs will appear one at a time after hitti
 
 ```{python}
 #| eval: false
-import numpy as np
+#| code-line-numbers: "|0-3|4-11|5|6|7-8|10"
+
 import py5
 
 def setup():
     py5.size(800, 400)
-    py5.background(0)
     img_path = 'piscina.png'
     img = py5.load_image(img_path)
     img.load_np_pixels()
@@ -234,6 +234,7 @@ py5.run_sketch()
 
 ```{python}
 #| eval: false
+#| code-line-numbers: "|0-3|4-11|5|6|7-8|10"
 {{< include ../examples/pixel-array-slicing.py >}}
 ```
 
