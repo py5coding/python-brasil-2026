@@ -91,7 +91,12 @@ def setup():
 
 
 def key_pressed():
-    animated_gif("out.gif", duration=5 / 60, frame_numbers=range(1, 361, 5))
+    f = py5.frame_count
+    animated_gif(
+        "out.gif",
+        duration=5 / 60,
+        frame_numbers=range(f + 1, f + 361, 5)
+    )
 
 
 def draw():
