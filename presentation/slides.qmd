@@ -433,16 +433,16 @@ Pillow, Raster.io, OpenCV...
 Exemplo do Tom Larrow
 
 :::: {.columns}
-::: {.column width="40%"}
+::: {.column width="25%"}
 
 ![](images/2d-noise.gif)
 
 :::
-::: {.column width="60%"}
+::: {.column width="75%"}
 
 ```{python}
 #| eval: false
-{{< include ../examples/TomLarrow02_07noise.py>}}
+{{< include ../examples/TomLarrow02_07noise.py >}}
 ```
 
 :::
