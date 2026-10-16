@@ -245,7 +245,7 @@ NOTE: in this slide the code block outputs will appear one at a time after hitti
 
 ```{python}
 #| eval: false
-#| code-line-numbers: "|0-3|4-11|5|6|7-8|10"
+#| code-line-numbers: "|5-6|7-8|9-10"
 
 import py5
 
@@ -254,14 +254,72 @@ def setup():
     img_path = 'piscina.png'
     img = py5.load_image(img_path)
     img.load_np_pixels()
-    pixels_array = img.np_pixels     
+    pixels_array = img.np_pixels  
     print(pixels_array.shape) # (400, 800, 4)
+    print(pixels_array) 
 
 py5.run_sketch()
 ```
-
 :::
 ::::
+
+. . . 
+
+```python
+(400, 800, 4)
+
+[[[255  96 119 105]
+  [255  37  61  49]
+  [255   2  30  20]
+  ...
+  [255  15  43  34]
+  [255  16  42  33]
+  [255  16  42  31]]
+
+ [[255 124 146 130]
+  [255 105 132 115]
+  [255  63  89  75]
+  ...
+  [255  19  42  34]
+  [255  20  43  34]
+  [255  20  43  32]]
+
+ [[255 110 132 116]
+  [255 111 133 117]
+  [255 118 141 125]
+  ...
+  [255  20  43  34]
+  [255  19  44  32]
+  [255  21  42  33]]
+
+ ...
+
+ [[255  92 157 170]
+  [255  78 148 162]
+  [255 100 159 172]
+  ...
+  [255 112 168 178]
+  [255 119 171 181]
+  [255 118 170 181]]
+
+ [[255 129 181 194]
+  [255 114 171 183]
+  [255  98 157 170]
+  ...
+  [255  92 162 177]
+  [255 100 165 178]
+  [255 105 165 177]]
+
+ [[255 130 175 186]
+  [255  95 153 166]
+  [255  75 142 157]
+  ...
+  [255  75 153 170]
+  [255  82 157 173]
+  [255  84 157 172]]]
+
+```
+
 
 ## Manipulando fatias do array!
 *Manipulating array slices!*
