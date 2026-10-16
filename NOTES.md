@@ -4,7 +4,7 @@
 
 [Website Description](https://talks.python.org.br/pybr26/talk/JGTEZV/)
 
-## Quarto Resoures
+## Quarto Resources
 
 * [Presentation documentation](https://quarto.org/docs/presentations/)
 * [Revealjs + Quarto](https://quarto.org/docs/presentations/revealjs/)
