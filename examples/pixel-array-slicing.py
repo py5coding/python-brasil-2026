@@ -1,6 +1,5 @@
 import py5
 
-
 def setup():
     py5.size(800, 400)
     py5.background(0)
@@ -12,8 +11,6 @@ def setup():
     pixels_arrays[:, :, 2] = 0
     img.update_np_pixels()
     py5.image(img, 0, 0)
-
-    py5.save_frame("red-blue-swimming-pool.png")
-
+#     py5.save_frame("red-blue-swimming-pool.png")
 
 py5.run_sketch()
