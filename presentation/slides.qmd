@@ -481,7 +481,7 @@ Uma grade 2D de posições e mapeia os valores em uma paleta que é um array de 
 :::: {.columns}
 ::: {.column width="40%"}
 
-![](images/particles-attraction.gif)
+![](images/particle-attraction.gif)
 
 :::
 ::: {.column width="60%"}
