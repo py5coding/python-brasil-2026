@@ -8,3 +8,4 @@ presentation/.slides.qmd.kate-swp
 examples/TomLarrow02_07noise_export.py
 examples/particles-friction-attraction_export.py
 examples/particle-life_export.py
+examples/flocking_export.py
