@@ -498,13 +498,58 @@ Uma grade 2D de posições e mapeia os valores em uma paleta que é um array de 
 ## *Flocking*: Cardumes e revoadas
 
 
+:::: {.columns}
+::: {.column width="40%"}
+
+![](images/flocking.gif)
+
+:::
+::: {.column width="60%"}
+
+```{python}
+#| eval: false
+{{< include ../examples/flocking.py >}}
+```
+
+:::
+::::
+
+
+## Particle Life
+
+
+:::: {.columns}
+::: {.column width="40%"}
+
+![](images/particle-life.gif)
+
+:::
+::: {.column width="60%"}
+
+```{python}
+#| eval: false
+{{< include ../examples/particle-life.py >}}
+```
+
+:::
+::::
+
 ## E tantas outras coisas! *And so much more!*
 
-# Encerramento <br>*Wrap-up*
+:::: {.columns}
+::: {.column width="40%"}
+
+![](images/trimesh-animation.gif)
+
+:::
+::: {.column width="60%"}
 
 Esperamos que depois disso você nos acredite que, mesmo sem grandes conhecimentos de computação científica ou ciência de dados, todo mundo pode usar bibliotecas Python avançadas para criar uma grande variedade de coisas!
 
 *We hope that after this you believe us that even without deep knowledge of scientific computing or data science, we can all use advanced Python libraries to create a wide variety of things!*
+
+:::
+::::
 
 # Obrigado! *Thank you!*
 ## Para mais sobre nós & py5... <br>*For more about us & py5...*
