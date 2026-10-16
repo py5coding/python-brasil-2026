@@ -423,14 +423,14 @@ Uma grade 2D de posições e mapeia os valores em uma paleta que é um array de 
 :::: {.columns}
 ::: {.column width="40%"}
 
-![](images/particles-atraction.gif)
+![](images/particles-attraction.gif)
 
 :::
 ::: {.column width="60%"}
 
 ```{python}
 #| eval: false
-{{< include ../examples/particles-friction-atraction.py >}}
+{{< include ../examples/particles-friction-attraction.py >}}
 ```
 
 :::
@@ -446,7 +446,7 @@ Uma grade 2D de posições e mapeia os valores em uma paleta que é um array de 
 
 Esperamos que depois disso você nos acredite que, mesmo sem grandes conhecimentos de computação científica ou ciência de dados, todo mundo pode usar bibliotecas Python avançadas para criar uma grande variedade de coisas!
 
-*We hope that after this you belive us that even without deep knowledge of scientific computing or data science, we can all use advanced Python libraries to create a wide variety of things!*
+*We hope that after this you believe us that even without deep knowledge of scientific computing or data science, we can all use advanced Python libraries to create a wide variety of things!*
 
 # Obrigado! *Thank you!*
 ## Para mais sobre nós & py5... <br>*For more about us & py5...*
