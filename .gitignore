@@ -5,3 +5,5 @@ uv.lock
 presentation/slides_files/
 _extensions/
 presentation/.slides.qmd.kate-swp
+examples/TomLarrow02_07noise_export.py
+examples/particles-friction-attraction_export.py
