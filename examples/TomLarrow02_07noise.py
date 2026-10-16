@@ -14,8 +14,9 @@ import numpy as np
 # How far apart the noise values will be. Lower numbers are more gradual
 noise_increment = 0.02
 
+
 def setup():
-    global img, mesh_x, mesh_y
+    global mesh_x, mesh_y
     py5.size(640, 360)
     # Builds two 2D arrays, mesh_x and mesh_y which have the dimensions of width x height
     # mesh_x has the values of the x position * noise_increment in the x direction, and is
@@ -23,18 +24,21 @@ def setup():
     # direction, and is duplicated for every x column
     mesh_x, mesh_y = np.meshgrid(
         np.arange(0, py5.width * noise_increment, noise_increment),
-        np.arange(0, py5.height * noise_increment, noise_increment)
+        np.arange(0, py5.height * noise_increment, noise_increment),
     )
+
 
 def draw():
     # The next line essentially loops through screen width and the screen height and
     # generates a value between 0 and 255 for each point. However because  we're passing
     # in the arrays mesh_x and mesh_y, it is generating an array output all at once instead
     # of calling os_noise over and over in a loop. This dramatically improves performance
-    out = py5.remap(py5.os_noise(mesh_x, mesh_y, py5.frame_count * noise_increment), -1, 1, 0, 255)
+    out = py5.remap(
+        py5.os_noise(mesh_x, mesh_y, py5.frame_count * noise_increment), -1, 1, 0, 255
+    )
     # Now that we have an array with the output, set the sketch's main canvas with it
     # bands = "L" is for a greyscale image since r,g, and b would all be the same value
-    py5.set_np_pixels(out, bands="L")
+    py5.set_np_pixels(out, bands="L")  # type: ignore
     # Write the framerate to the window tile to see the effect of the
     # optimization
     py5.window_title(str(round(py5.get_frame_rate(), 1)))
