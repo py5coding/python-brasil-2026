@@ -370,6 +370,27 @@ Pillow, Raster.io, OpenCV...
 ::::
 
 
+## Noise em 2D / 3D
+
+Exemplo do Tom Larrow
+
+:::: {.columns}
+::: {.column width="40%"}
+
+![](images/2d-noise.gif)
+
+:::
+::: {.column width="60%"}
+
+```{python}
+#| eval: false
+{{< include ../examples/TomLarrow02_07noise.py>}}
+```
+
+:::
+::::
+
+
 ## Agora um exemplo avaçado 
 
 Uma grade 2D de posições e mapeia os valores em uma paleta que é um array de cores...
@@ -396,6 +417,24 @@ Uma grade 2D de posições e mapeia os valores em uma paleta que é um array de 
 # NumPy in Simulations
 
 ## Partículas! *Particles!*
+
+
+
+:::: {.columns}
+::: {.column width="40%"}
+
+![](images/particles-atraction.gif)
+
+:::
+::: {.column width="60%"}
+
+```{python}
+#| eval: false
+{{< include ../examples/particles-friction-atraction.py >}}
+```
+
+:::
+::::
 
 
 ## *Flocking*: Cardumes e revoadas
