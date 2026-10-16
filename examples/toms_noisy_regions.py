@@ -1,17 +1,19 @@
 # Based on Tom Larrow's experiment at:
 # https://codeberg.org/TomLarrow/creative-coding-experiments/src/branch/main/x_0049/x_0049.py
 
-import py5
 import numpy as np
+import py5
+
 
 def setup():
     py5.size(800, 800)
     py5.no_stroke()
     py5.color_mode(py5.HSB)
 
+
 def draw():
     py5.no_loop()
-    py5.background(150, 100, 100)     
+    py5.background(150, 100, 100)
     margin = py5.width / 16  # Give us a margin on the right
     x = margin
     while x < py5.width - margin:
@@ -21,9 +23,9 @@ def draw():
         if x + w > py5.width - margin:
             w = (py5.width - margin) - x
         py5.fill(w * 8, 200, 200)
-        py5.rect(x, y, w, h) 
-        x += w    
-        
+        py5.rect(x, y, w, h)
+        x += w
+
     # Now that we have the image above, lets add grain, but only to the parts
     # that aren't the background
     py5.load_np_pixels()  # Load the processing pixel array as an uint8 numpy array
@@ -47,9 +49,14 @@ def draw():
     # If it is the background, copy in the value for that pixel from np_pixels (which is just our background)
     # Otherwise, copy in the value from our noise_pixels
     # This is how we end up with only the foreground components having grain
-    my_display = np.where(py5.np_pixels == py5.np_pixels[0, 0], py5.np_pixels, noise_pixels)
+    my_display = np.where(
+        py5.np_pixels == py5.np_pixels[0, 0], py5.np_pixels, noise_pixels
+    )
     py5.set_np_pixels(my_display)  # Copy our new array back to np_pixels
-    py5.update_pixels()  # And run update_pixels() to actually see the results
+    # no need to explicitly call update_pixels() because set_np_pixels()
+    # takes care of that for us
+    # py5.update_pixels()
+
 
 def key_pressed():
     py5.redraw()
