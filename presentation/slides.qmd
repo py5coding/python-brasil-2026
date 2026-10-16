@@ -61,8 +61,8 @@ Creative Coding is the practice of writing software as a form of creative expres
 
 ## O que é py5? *What is py5?*
 
-Um *framework* para programaçaõ criativa.
-*A Creative Coding framework*
+Um *framework* para programação criativa.
+*A Creative Coding framework.*
 
 ::: notes
 TODO: add simple example here
