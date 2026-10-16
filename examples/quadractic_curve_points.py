@@ -36,6 +36,7 @@ def quadratic_points(ax, ay, bx, by, cx, cy, num_points=24, first_point=False):
     t = np.arange(0 if first_point else 1, num_points + 1) / num_points
     x = (1 - t) * (1 - t) * ax + 2 * (1 - t) * t * bx + t * t * cx
     y = (1 - t) * (1 - t) * ay + 2 * (1 - t) * t * by + t * t * cy
+
     return np.column_stack((x, y))
 
 
@@ -69,4 +70,4 @@ def key_pressed():
     py5.save_frame("out.png")
 
 
-py5.run_sketch(block=False)
+py5.run_sketch()
