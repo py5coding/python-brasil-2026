@@ -2,7 +2,7 @@
 # Copyright (2025) Alexandre B A Villares - BSD license
 # Numpy flocking with py5 - revisiting sketch 2024_01_19
 #
-# Based on the boids flocking example from "From Pytnon to Numpy"
+# Based on the boids flocking example from "From Python to Numpy"
 # Copyright (2017) Nicolas P. Rougier - BSD license
 # More information at https://github.com/rougier/numpy-book
 # -----------------------------------------------------------------------------
