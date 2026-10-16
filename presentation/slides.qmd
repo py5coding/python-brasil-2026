@@ -45,7 +45,7 @@ Speaker Notes
 ![](images/creative_code_cover.png){width="1200"}
 
 
-## Por qual motivo um artista deveria programar?
+## Por que um artista deveria programar?
 
 *Why should an artist program?*
 
@@ -61,9 +61,8 @@ Creative Coding is the practice of writing software as a form of creative expres
 
 ## O que é py5? *What is py5?*
 
-Um *framework* para programação criativa.
-*A Creative Coding framework.*
-
+py5 é uma biblioteca, ou um *framework*, para programação criativa.<br>
+*py5 is a Creative Coding libray/framework.*
 
 :::: {.columns}
 ::: {.column width="35%"}
@@ -75,41 +74,44 @@ Um *framework* para programação criativa.
 
 ```{python}
 #| eval: false
-from collections import deque  # a double-ended queue
-import py5  # check outs https://github.com/py5coding 
+{{< include ../examples/hello-py5.py >}}
+```
+:::
+::::
 
-history = deque(maxlen=512)  # mouse dragged positions
+::: notes
+In this presentation we will use the Python library py5. 
+This library is used extensively in educational settings and also to create art.
+:::
 
-def setup():   # py5 will call this once to set things up
-    py5.size(600, 400)
-    py5.no_stroke()
-    py5.color_mode(py5.HSB)
+## O que é py5? *What is py5?*
 
-def draw():   # py5 will call this in a loop
-    py5.background(51)
-    for i, (x, y) in enumerate(history):
-        py5.fill(i / 2, 255, 255, 128)
-        py5.circle(x, y, 8 + i / 16)
-    history.rotate(-1)
+Na sala de aula podemos usar o **modo importado**<br>
+*In a classroom setting we can use <b>imported mode</b>*
 
-def mouse_dragged():  # py5 will call this when you drag the mouse
-    history.append((py5.mouse_x, py5.mouse_y))
-    
-def key_pressed():   # py5 will call this when a key is pressed
-    history.clear()
+:::: {.columns}
+::: {.column width="35%"}
 
-py5.run_sketch()
+![](images/hello.gif)
+
+:::
+::: {.column width="65%"}
+
+```{python}
+#| eval: false
+{{< include ../examples/hello-py5-imported.py >}}
 ```
 :::
 ::::
 
 
-
 ::: notes
-TODO: add simple example here
-
-In this presentation we will use the Python library py5. This library is used extensively in educational settings and also to create art.
+Very quickly mentioning imported mode
 :::
+
+
+# Alguns trabalhos feitos com py5, pra valer...<br>*Some work done with py5, for real...*
+
 
 ## {.credit-slide background-image="images/times-square-river-is-a-circle.png" background-size="cover"}
 
@@ -366,6 +368,7 @@ Pillow, Raster.io, OpenCV...
 
 :::
 ::::
+
 
 ## Agora um exemplo avaçado 
 
