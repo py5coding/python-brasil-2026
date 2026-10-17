@@ -429,6 +429,47 @@ Pillow, Raster.io, OpenCV...
 ::::
 
 
+## Grades e o `np.meshgrid`
+
+*Grids and `np.meshgrid()`*
+
+
+```{python}
+#| output-location: fragment
+for i in range(5):
+    for j in range(5):
+        print(f'({i}, {j}) ', end='')
+    print('\n')
+
+```
+## Grades e o `np.meshgrid`
+
+*Grids and `np.meshgrid()`*
+
+```{python}
+#| output-location: fragment
+from itertools import product
+
+grade = list(product(range(5), range(5)))
+print(grade)
+        
+```
+## Grades e o `np.meshgrid`
+
+*Grids and `np.meshgrid()`*
+
+```{python}
+#| output-location: fragment
+import numpy as np
+
+mesh_x, mesh_y = np.meshgrid(range(5), range(5))
+mesh_x, mesh_y
+```
+
+## Grades e o `np.meshgrid`
+
+![](images/meshgrid.gif)
+
 ## Noise em 2D / 3D
 
 Exemplo do Tom Larrow
