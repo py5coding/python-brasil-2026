@@ -602,7 +602,7 @@ Esperamos que depois disso você nos acredite que, mesmo sem grandes conheciment
 - Forum: [**github.com/py5coding/py5generator/discussions**](https://github.com/py5coding/py5generator/discussions/)
 - Mastodon: [**fosstodon.org/@py5coding**](https://fosstodon.org/@py5coding)
 
-![Presentation URL: https://github.com/hx2A/python-brasil-2026](images/github-qrcode.png){fig-align="left"}
+![Presentation URL: https://github.com/py5coding/python-brasil-2026](images/github-qrcode.png){fig-align="left"}
 
 . . .
 
