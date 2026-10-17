@@ -335,7 +335,7 @@ py5.run_sketch()
 
 ```{python}
 #| eval: false
-#| code-line-numbers: "|0-3|4-11|5|6|7-8|10"
+#| code-line-numbers: "8-9|10-11|12-13"
 {{< include ../examples/pixel-array-slicing.py >}}
 ```
 
@@ -358,6 +358,7 @@ py5.run_sketch()
 
 ```{python}
 #| eval: false
+#| code-line-numbers: "8-9|10-11|12-13"
 {{< include ../examples/pixel-array-saturation.py >}}
 ```
 
@@ -380,7 +381,7 @@ py5.run_sketch()
 
 ```{python}
 #| eval: false
-#| code-line-numbers: "|7-8|10-12|14"
+#| code-line-numbers: "8|9|10|11-15|16-17"
 {{< include ../examples/concentric_colorful_circles.py >}}
 ```
 
