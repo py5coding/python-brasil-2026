@@ -1,0 +1,228 @@
+/* pybr2026-reveal.css - Adapted for Quarto Reveal.js */
+
+@import url("https://fonts.googleapis.com/css2?family=Cascadia+Mono:wght@400;700&family=Roboto:ital,wght@0,400;0,700;1,400&display=swap");
+
+:root {
+  --preto: #0f0f0f;
+  --off-white: #e8f4ba;
+  --limao: #b7ff06;
+  --violeta: #bf2eb2;
+  --violeta-claro: #d26cc9;
+  --cinza: #ababab;
+  --cinza-escuro: #4a4a4a;
+  --cartao-codigo: #ffffff;
+
+  --bg: var(--preto);
+  --text: var(--off-white);
+  --muted: var(--cinza);
+  --accent: var(--limao);
+  --link: var(--violeta-claro);
+  --rule: var(--off-white);
+  --card: #242424;
+  --card-outline: #3a3a3a;
+  --lockup: url("img/lockup-on-dark.png");
+  --marca-dagua: url("img/marca-dagua-escuro.png");
+}
+
+/* Base Presentation Background & Typography */
+.reveal-viewport {
+  background: var(--bg);
+}
+
+.reveal {
+  color: var(--text);
+  font-family: "Roboto", sans-serif;
+  font-size: 32px;
+}
+
+/* Headings Scoped to Override Reveal Theme */
+.reveal h1,
+.reveal h2,
+.reveal h3,
+.reveal h4,
+.reveal h5,
+.reveal h6 {
+  font-family: "Cascadia Mono", monospace;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.reveal h1 {
+  font-size: 56px;
+  color: var(--accent);
+  margin-bottom: 0.6em;
+}
+
+.reveal h2 {
+  font-size: 46px;
+  color: var(--text);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  padding-bottom: 0.4em;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 0.7em;
+}
+
+.reveal h3 {
+  font-size: 36px;
+  color: var(--accent);
+  margin-bottom: 0.4em;
+}
+
+.reveal p {
+  margin: 0 0 0.6em;
+  line-height: 1.35;
+}
+
+.reveal ol li::marker {
+  font-family: "Cascadia Mono", monospace;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.reveal a {
+  color: var(--link);
+  text-decoration: underline;
+  font-family: "Cascadia Mono", monospace;
+}
+
+.reveal mark {
+  background: var(--limao);
+  color: var(--preto);
+  font-weight: 700;
+  padding: 0 0.1em;
+}
+
+/* Blockquotes */
+.reveal blockquote {
+  width: 100%;
+  margin: 0 0 0.6em;
+  padding: 0;
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  font-size: 44px;
+  line-height: 1.25;
+}
+
+.reveal blockquote > p:first-child::before {
+  content: "“";
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.reveal blockquote > p:last-child::after {
+  content: "”";
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Code Blocks */
+.reveal pre {
+  box-shadow: none;
+  width: 100%;
+  margin: 0 0 0.5em;
+}
+
+.reveal pre code {
+  background: var(--cartao-codigo);
+  color: #24292e;
+  border: 1px solid #d0d7de;
+  border-radius: 12px;
+  padding: 20px 24px;
+  font-family: "Cascadia Mono", monospace;
+  font-size: 24px;
+  line-height: 1.3;
+  max-height: none;
+}
+
+.reveal :not(pre) > code {
+  background: #eef0f2;
+  color: #24292e;
+  border-radius: 6px;
+  padding: 0.05em 0.3em;
+  font-family: "Cascadia Mono", monospace;
+  font-size: 0.9em;
+}
+
+/* Slide Footers & Slide Numbers */
+.reveal .slide-number {
+  font-family: "Cascadia Mono", monospace;
+  font-size: 18px;
+  color: var(--muted);
+  background: transparent;
+  right: 64px;
+  bottom: 28px;
+}
+
+/* Light Mode Variant (apply with {.light} on a slide) */
+.reveal .slides section.light {
+  --bg: #ffffff;
+  --text: var(--preto);
+  --muted: var(--cinza-escuro);
+  --accent: var(--preto);
+  --link: var(--violeta);
+  --rule: var(--preto);
+  --card: var(--off-white);
+  --card-outline: #c9d9a0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.reveal .slides section.light h1,
+.reveal .slides section.light h2 {
+  color: var(--preto);
+  border-color: var(--preto);
+}
+
+/* Section Title Slides (apply with {.secao}) */
+.reveal .slides section.secao {
+  background: var(--marca-dagua) right -40px bottom -40px / auto 75% no-repeat, var(--bg);
+}
+
+.reveal .slides section.secao h1 {
+  color: var(--text);
+  font-size: 56px;
+}
+
+/* Enable vertical scrolling on oversized code blocks */
+.reveal pre {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.reveal pre code {
+  max-height: none;
+}
+
+/* Discrete photo credit */
+.reveal .credit {
+  font-family: "Cascadia Mono", monospace;
+  font-size: 16px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+/* Bottom bar overlay for full-bleed photo slides */
+.reveal .credit-bar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: 0;
+  padding: 16px 64px;
+  background: rgba(15, 15, 15, 0.75);
+  color: var(--off-white);
+  font-family: "Cascadia Mono", monospace;
+  font-size: 20px;
+}
+
+/* Remove border and hide h2 on full-bleed slides */
+.reveal section.credit-slide h2,
+.reveal section.imagem-cheia h2,
+.reveal h2:empty {
+  display: none !important;
+  border-bottom: none !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
