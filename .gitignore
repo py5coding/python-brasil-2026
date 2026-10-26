@@ -1,10 +1,16 @@
 uv.lock
-.venv
+.venv/
 
 *.html
-presentation/slides_files/
+**/dist/
+**/slides_files/
+**/_freeze/
+**/.quarto/
+presentation/.gitignore
+
 _extensions/
 presentation/.slides.qmd.kate-swp
+
 examples/TomLarrow02_07noise_export.py
 examples/particles-friction-attraction_export.py
 examples/particle-life_export.py
